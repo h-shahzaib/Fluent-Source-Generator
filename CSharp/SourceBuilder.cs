@@ -56,7 +56,7 @@ namespace FluentSourceGenerator.CSharp
             var source_builder = new SourceBuilder();
             source_builder.ChildOptions = ChildOptions;
             source_builder_act.Invoke(source_builder);
-            m_Tokens.Add(new BlockToken(ChildOptions, $"{modifiers} class {class_name}", source_builder));
+            m_Tokens.Add(new BlockToken(ChildOptions, $"{(!string.IsNullOrWhiteSpace(modifiers) ? $"{modifiers} " : string.Empty)}class {class_name}", source_builder));
         }
 
         public void Method(string modifiers, string return_type, string method_name, string parameters, Action<SourceBuilder> source_builder_act)
@@ -64,7 +64,7 @@ namespace FluentSourceGenerator.CSharp
             var source_builder = new SourceBuilder();
             source_builder.ChildOptions = ChildOptions;
             source_builder_act.Invoke(source_builder);
-            m_Tokens.Add(new BlockToken(ChildOptions, $"{modifiers} {return_type} {method_name}({parameters})", source_builder));
+            m_Tokens.Add(new BlockToken(ChildOptions, $"{(!string.IsNullOrWhiteSpace(modifiers) ? $"{modifiers} " : string.Empty)}{return_type} {method_name}({parameters})", source_builder));
         }
 
         public override string ToString()
