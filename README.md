@@ -1,3 +1,4 @@
+
 ## Overview
 
 Built on **.NET Standard 2.0**, this library provides seamless compatibility across all .NET versions, with zero external dependencies. Simply import the project as a reference, and you're ready to go!
@@ -137,3 +138,6 @@ You'll have to use a different name like maybe `_inner_method` for inner scope.
 For better flexibility, use **.NET Core 3.0+** or **.NET Standard 2.1+** to avoid this limitation, as these versions allow variable name reuse in nested scopes.
 
 ---
+
+Tags:
+C#, CSharp, CodeGen, SourceGen, Source Generator, Code Generator, Generator, Fluent, Easy, Readable, Modern
