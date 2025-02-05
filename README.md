@@ -4,7 +4,7 @@
 
 Built on **.NET Standard 2.0**, this library provides seamless compatibility across all .NET versions, with zero external dependencies. Simply import the project as a reference, and you're ready to go!
 
-This library simplifies source code generation with a fluent, user-friendly API (inspired by QuestPDF) that ensures your code structure remains clean, readable, and intuitive. It takes care of all the tedious formatting, indentation, and syntax, so you can focus on the logic of generating code.
+This library simplifies source code generation with a fluent, user-friendly API (inspired by **QuestPDF**) that ensures your code structure remains clean, readable, and intuitive. It takes care of all the tedious formatting, indentation, and syntax, so you can focus on the logic of generating code.
 
 
 ---
