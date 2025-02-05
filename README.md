@@ -104,8 +104,6 @@ _root.ChildOptions.RemoveCharReplacement('`');
 ### 3. **Token-Based System**  
 Every element is aware of the elements before and after it, thanks to a token-based system. For example, when calling `.Line()` twice, no line break is inserted between them. However, when using `.Lines()`, a different token is used that understands that multiple lines should be preceded by a line break. Furthermore, if the `.Line()` token is the last in a block with no subsequent content, it automatically knows that the block is about to end and prevents adding an unnecessary line break.
 
----  
-
 This system ensures that code generation remains structured and easy to control, helping maintain consistency and readability across your generated output.
 
 ---
