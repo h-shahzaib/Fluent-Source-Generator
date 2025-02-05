@@ -1,5 +1,6 @@
+⚠ **Note:** Currently, this library is designed to generate C# source code, but it can easily be extended to support source code generation for virtually any programming or scripting language.  
 
-## Overview
+## **Overview** 
 
 Built on **.NET Standard 2.0**, this library provides seamless compatibility across all .NET versions, with zero external dependencies. Simply import the project as a reference, and you're ready to go!
 
@@ -9,7 +10,7 @@ This library simplifies source code generation with a fluent, user-friendly API 
 ---
 
 
-## Example
+## **Example**
 
 To demonstrate the library's usage, here's how you can generate C# code:
 
@@ -114,7 +115,7 @@ This system ensures that code generation remains structured and easy to control,
 ---
 
 
-## Getting Started
+## **Getting Started**
 
 1. Add the library to your project by importing it as a reference.
 2. Use the fluent API to start building your code structure.
@@ -124,7 +125,7 @@ This system ensures that code generation remains structured and easy to control,
 ---
 
 
-## Limitation with Older .NET Versions
+## **Limitation with Older .NET Versions**
 
 
 ### **Potential Name Conflict In Nested Scopes**
