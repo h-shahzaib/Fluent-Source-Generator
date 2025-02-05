@@ -130,7 +130,7 @@ _class.Method("public", "void", "Main", "", _method =>
 
 #### **Solution:**
 
-So you'll have to use a different name like maybe `_inner_method` for inner scope.
+You'll have to use a different name like maybe `_inner_method` for inner scope.
 
 ### **Recommendation**
 
