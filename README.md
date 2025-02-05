@@ -39,7 +39,7 @@ namespace MyNamespace
 
 ### **Code to Generate the Above Output**
 
-Now, using the library's `SourceBuilder` API, you can generate this code as follows:
+Now, using the library's `SourceBuilder`, you can generate the above code as follows:
 
 ```csharp
 var _root = new SourceBuilder();
@@ -75,7 +75,7 @@ var str = _root.ToString();
 
 ### **1. Code that Writes Code**
 
-One of the key strengths of this library is that the code used to generate other code is **nearly identical** to the output that gets generated. You don't have to worry about indentation, braces, or high-level syntax like `usings`, `namespaces`, or `classes`—the library handles it all for you.
+One of the key strengths of this library is that the code used to generate other code is **nearly identical** to the output that gets generated. You don't have to worry about line breaks, indentation, braces, or high-level syntax like `usings`, `namespaces`, or `classes`—the library handles it all for you.
 
 ### **2. Char Replacement System**
 
