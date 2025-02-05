@@ -56,7 +56,7 @@ _root.Namespace("MyNamespace", _namespace =>
 {
     _namespace.Class("public", "Program", _class =>
     {
-        _class.Method("public async", "Task", "Main", "string[] args", _method =>
+        _class.Method("public static async", "Task", "Main", "string[] args", _method =>
         {
             _method.Line("Console.WriteLine(`Hello World!`);");
             _method.Line("Console.WriteLine(`Hello World!`);");
