@@ -72,10 +72,6 @@ var str = _root.ToString();
 
 ---
 
-Here's the updated and rephrased version of the key features section with the third point added:
-
----
-
 ## **Key Features**
 
 ### 1. **Code that Writes Code**  
