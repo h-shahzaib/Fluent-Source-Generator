@@ -8,7 +8,7 @@ This library simplifies source code generation with a fluent, user-friendly API 
 
 ## Example
 
-To demonstrate the library's usage, here's how you can generate C# code for a simple application:
+To demonstrate the library's usage, here's how you can generate C# code:
 
 ### **Generated Code**
 
@@ -107,10 +107,6 @@ _root.ChildOptions.RemoveCharReplacement('`');
 1. Add the library to your project by importing it as a reference.
 2. Use the fluent API to start building your code structure.
 3. Call `ToString()` on the `SourceBuilder` instance to retrieve the generated C# code.
-
----
-
-Here’s a more concise version of the limitation example:
 
 ---
 
