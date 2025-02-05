@@ -27,7 +27,7 @@ namespace MyNamespace
 {
     public class Program
     {
-        public async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("Hello World!");
