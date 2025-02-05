@@ -1,7 +1,3 @@
-Here's a refined and more organized version of your `README.md`:
-
----
-
 ## Overview
 
 Built on **.NET Standard 2.0**, this library provides seamless compatibility across all .NET versions, with zero external dependencies. Simply import the project as a reference, and you're ready to go!
