@@ -5,11 +5,14 @@ Built on **.NET Standard 2.0**, this library provides seamless compatibility acr
 
 This library simplifies source code generation with a fluent, user-friendly API (inspired by QuestPDF) that ensures your code structure remains clean, readable, and intuitive. It takes care of all the tedious formatting, indentation, and syntax, so you can focus on the logic of generating code.
 
+
 ---
+
 
 ## Example
 
 To demonstrate the library's usage, here's how you can generate C# code:
+
 
 ### **Generated Code**
 
@@ -37,6 +40,7 @@ namespace MyNamespace
     }
 }
 ```
+
 
 ### **Code to Generate the Above Output**
 
@@ -70,12 +74,15 @@ _root.Namespace("MyNamespace", _namespace =>
 var str = _root.ToString();
 ```
 
+
 ---
+
 
 ## **Key Features**
 
 ### 1. **Code that Writes Code**  
 One of the key strengths of this library is that the code used to generate other code is nearly identical to the generated output. You no longer need to worry about line breaks, indentation, braces, or high-level syntax like `usings`, `namespaces`, or `classes`—the library takes care of all that for you.
+
 
 ### 2. **Char Replacement System**  
 When writing strings with double quotes (`"`) inside, you can use backticks (`` ` ``) for convenience. The library has a built-in character replacement system to handle this.
@@ -97,12 +104,15 @@ To remove a character replacement:
 _root.ChildOptions.RemoveCharReplacement('`');
 ```
 
+
 ### 3. **Token-Based System**  
 Every element is aware of the elements before and after it, thanks to a token-based system. For example, when calling `.Line()` twice, no line break is inserted between them. However, when using `.Lines()`, a different token is used that understands that multiple lines should be preceded by a line break. Furthermore, if the `.Line()` token is the last in a block with no subsequent content, it automatically knows that the block is about to end and prevents adding an unnecessary line break.
 
 This system ensures that code generation remains structured and easy to control, helping maintain consistency and readability across your generated output.
 
+
 ---
+
 
 ## Getting Started
 
@@ -110,9 +120,12 @@ This system ensures that code generation remains structured and easy to control,
 2. Use the fluent API to start building your code structure.
 3. Call `ToString()` on the `SourceBuilder` instance to retrieve the generated C# code.
 
+
 ---
 
+
 ## Limitation with Older .NET Versions
+
 
 ### **Potential Name Conflict In Nested Scopes**
 
