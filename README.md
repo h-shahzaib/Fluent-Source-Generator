@@ -72,34 +72,41 @@ var str = _root.ToString();
 
 ---
 
-## Key Features
+Here's the updated and rephrased version of the key features section with the third point added:
 
-### **1. Code that Writes Code**
+---
 
-One of the key strengths of this library is that the code used to generate other code is **nearly identical** to the output that gets generated. You don't have to worry about line breaks, indentation, braces, or high-level syntax like `usings`, `namespaces`, or `classes`—the library handles it all for you.
+## **Key Features**
 
-### **2. Char Replacement System**
+### 1. **Code that Writes Code**  
+One of the key strengths of this library is that the code used to generate other code is nearly identical to the generated output. You no longer need to worry about line breaks, indentation, braces, or high-level syntax like `usings`, `namespaces`, or `classes`—the library takes care of all that for you.
 
-Notice that when writing strings with double quotes (`"`) inside, you can use backticks (`` ` ``) for convenience. The library has a **character replacement system** in place to handle this.
+### 2. **Char Replacement System**  
+When writing strings with double quotes (`"`) inside, you can use backticks (`` ` ``) for convenience. The library has a built-in character replacement system to handle this.
 
 For example:
 ```csharp
 _method.Line("Console.WriteLine(`Hello World!`);");
 ```
+This uses backticks instead of double quotes to avoid escaping characters. The library automatically registers backticks as replacements for double quotes. You can also register custom character replacements as needed.
 
-This uses backticks instead of double quotes to avoid escaping characters. The library automatically registers backticks as a replacement for double quotes. You can also configure custom replacements if necessary.
-
-To **register a custom character replacement**:
+To register a custom character replacement:
 ```csharp
 _root.ChildOptions.RegisterCharReplacement('`', '"');
 ```
+This ensures that any backtick in the `SourceBuilder` will be replaced by double quotes when generating the code.
 
-This ensures any backtick in the `SourceBuilder` will be replaced by double quotes when generating the code.
-
-To **remove a character replacement**:
+To remove a character replacement:
 ```csharp
 _root.ChildOptions.RemoveCharReplacement('`');
 ```
+
+### 3. **Token-Based System**  
+Every element is aware of the elements before and after it, thanks to a token-based system. For example, when calling `.Line()` twice, no line break is inserted between them. However, when using `.Lines()`, a different token is used that understands that multiple lines should be preceded by a line break. Furthermore, if the `.Line()` token is the last in a block with no subsequent content, it automatically knows that the block is about to end and prevents adding an unnecessary line break.
+
+---  
+
+This system ensures that code generation remains structured and easy to control, helping maintain consistency and readability across your generated output.
 
 ---
 
