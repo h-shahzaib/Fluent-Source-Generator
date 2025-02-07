@@ -12,12 +12,7 @@ This library simplifies source code generation with a fluent, user-friendly API 
 
 ## **Example**
 
-To demonstrate the library's usage, here's how you can generate C# code:
-
-
-### **Generated Code**
-
-This is the generated code that will be output by the library:
+To demonstrate the library's usage, lets generate the following C# code:
 
 ```csharp
 using System.IO;
@@ -42,10 +37,7 @@ namespace MyNamespace
 }
 ```
 
-
-### **Code to Generate the Above Output**
-
-Now, using the library's `SourceBuilder`, you can generate the above code as follows:
+Using the library's `SourceBuilder`, you can generate the above code as follows:
 
 ```csharp
 var _root = new SourceBuilder();
