@@ -143,5 +143,3 @@ You'll have to use a different name like maybe `_inner_method` for inner scope.
 ### **Recommendation**
 
 For better flexibility, use **.NET Core 3.0+** or **.NET Standard 2.1+** to avoid this limitation, as these versions allow variable name reuse in nested scopes.
-
----
