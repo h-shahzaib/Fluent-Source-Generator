@@ -1,10 +1,11 @@
 Copyright (C) 2025 Shahzaib Hassan
 
-Permission is hereby granted to use this software for personal and commercial projects.
-However, the following restrictions apply:
+Permission is granted to use this software in personal and commercial projects under the following conditions:
 
-1. Redistribution, copying, or sublicensing of this software is strictly prohibited.
-2. Modifications to this software are allowed for personal use only and may not be uploaded, hosted, or published on any public source control system (such as GitHub, GitLab, or Bitbucket).
-3. This license must be included in any copies of the software used for development.
+1. Redistribution, copying, sublicensing, or resale of this software in any form is strictly prohibited.
+2. Modifications or derivative works are permitted solely for private or commercial use. But such modifications must not be published, uploaded, hosted, or shared on any public or private source control system, including but not limited to GitHub, GitLab, or Bitbucket.
+3. Any integration of this software into other products or projects must include this license in full, along with the original copyright.
+4. This software is provided "as is" without any warranty, express or implied. The author shall not be liable for any damages arising from its use.
+5. In the event of any breach of these terms, legal action may be pursued.
 
-Violation of these terms will result in legal action.
+By using this software, you acknowledge and agree to the above terms.
