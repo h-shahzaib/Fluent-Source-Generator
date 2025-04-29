@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace FluentSourceGenerator.CSharp
+namespace FluentSourceGenerator.Options
 {
-    [Serializable]
-    internal class SourceBuilderOptions
+    public class SourceBuilderOptions
     {
         private readonly Dictionary<char, char> CharacterReplacements = new Dictionary<char, char>();
 

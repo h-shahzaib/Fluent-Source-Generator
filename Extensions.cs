@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FluentSourceGenerator
 {
-    internal static class Extensions
+    public static class Extensions
     {
         public static string ApplyReplacements(this string str, IDictionary<char, char> replacements)
         {

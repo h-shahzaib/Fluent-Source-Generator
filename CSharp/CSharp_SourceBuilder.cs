@@ -1,4 +1,5 @@
-﻿using FluentSourceGenerator.CSharp.Tokens;
+﻿using FluentSourceGenerator.Options;
+using FluentSourceGenerator.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FluentSourceGenerator.CSharp
 {
-    internal sealed class SourceBuilder
+    public class CSharp_SourceBuilder
     {
         private readonly List<IToken> m_Tokens = new List<IToken>();
 
@@ -43,25 +44,25 @@ namespace FluentSourceGenerator.CSharp
             m_Tokens.Add(new LineToken(ChildOptions, $"using {statement};"));
         }
 
-        public void Namespace(string @namespace, Action<SourceBuilder> source_builder_act)
+        public void Namespace(string @namespace, Action<CSharp_SourceBuilder> source_builder_act)
         {
-            var source_builder = new SourceBuilder();
+            var source_builder = new CSharp_SourceBuilder();
             source_builder.ChildOptions = ChildOptions;
             source_builder_act.Invoke(source_builder);
             m_Tokens.Add(new BlockToken(ChildOptions, $"namespace {@namespace}", source_builder));
         }
 
-        public void Class(string modifiers, string class_name, Action<SourceBuilder> source_builder_act)
+        public void Class(string modifiers, string class_name, Action<CSharp_SourceBuilder> source_builder_act)
         {
-            var source_builder = new SourceBuilder();
+            var source_builder = new CSharp_SourceBuilder();
             source_builder.ChildOptions = ChildOptions;
             source_builder_act.Invoke(source_builder);
             m_Tokens.Add(new BlockToken(ChildOptions, $"{(!string.IsNullOrWhiteSpace(modifiers) ? $"{modifiers} " : string.Empty)}class {class_name}", source_builder));
         }
 
-        public void Method(string modifiers, string return_type, string method_name, string parameters, Action<SourceBuilder> source_builder_act)
+        public void Method(string modifiers, string return_type, string method_name, string parameters, Action<CSharp_SourceBuilder> source_builder_act)
         {
-            var source_builder = new SourceBuilder();
+            var source_builder = new CSharp_SourceBuilder();
             source_builder.ChildOptions = ChildOptions;
             source_builder_act.Invoke(source_builder);
             m_Tokens.Add(new BlockToken(ChildOptions, $"{(!string.IsNullOrWhiteSpace(modifiers) ? $"{modifiers} " : string.Empty)}{return_type} {method_name}({parameters})", source_builder));

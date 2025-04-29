@@ -37,10 +37,10 @@ namespace MyNamespace
 }
 ```
 
-Using the library's `SourceBuilder`, you can generate the above code as follows:
+Using the library's `CSharp_SourceBuilder`, you can generate the above code as follows:
 
 ```csharp
-var _root = new SourceBuilder();
+var _root = new CSharp_SourceBuilder();
 _root.Using("System.IO");
 _root.Using("System.Collections.Generic");
 

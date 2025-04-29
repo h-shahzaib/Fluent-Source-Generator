@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FluentSourceGenerator.CSharp.Tokens
+namespace FluentSourceGenerator.Tokens
 {
-    internal interface IToken
+    public interface IToken
     {
         string ToString();
     }

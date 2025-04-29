@@ -1,23 +1,24 @@
 ﻿using FluentSourceGenerator.CSharp;
+using FluentSourceGenerator.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FluentSourceGenerator.CSharp.Tokens
+namespace FluentSourceGenerator.Tokens
 {
-    internal class BlockToken : BaseToken
+    public class BlockToken : BaseToken
     {
         public string Header { get; set; }
-        public SourceBuilder SourceBuilder { get; set; }
+        public CSharp_SourceBuilder SourceBuilder { get; set; }
 
-        public BlockToken(SourceBuilderOptions options, SourceBuilder source_builder) : base(options)
+        public BlockToken(SourceBuilderOptions options, CSharp_SourceBuilder source_builder) : base(options)
         {
             SourceBuilder = source_builder;
         }
 
-        public BlockToken(SourceBuilderOptions options, string header, SourceBuilder source_builder) : base(options)
+        public BlockToken(SourceBuilderOptions options, string header, CSharp_SourceBuilder source_builder) : base(options)
         {
             Header = header;
             SourceBuilder = source_builder;
