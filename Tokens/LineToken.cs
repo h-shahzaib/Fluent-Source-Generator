@@ -1,12 +1,12 @@
-﻿using FluentSourceGenerator.CSharp;
-using FluentSourceGenerator.Options;
+﻿using Flynth;
+using Flynth.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FluentSourceGenerator.Tokens
+namespace Flynth.Tokens
 {
     public class LineToken : BaseToken
     {
@@ -14,7 +14,6 @@ namespace FluentSourceGenerator.Tokens
 
         public LineToken(SourceBuilderOptions options) : base(options)
         {
-
         }
 
         public LineToken(SourceBuilderOptions options, string line) : base(options)
@@ -24,7 +23,7 @@ namespace FluentSourceGenerator.Tokens
 
         public override string ToString()
         {
-            return Line.ApplyReplacements(Options.GetCharReplacements());
+            return ApplyReplacements(Line);
         }
     }
 }
