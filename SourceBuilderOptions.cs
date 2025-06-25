@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Flynth.Core
+namespace Flynth
 {
     /// <summary>
     /// Provides configuration options for source code generation via SourceBuilders.
