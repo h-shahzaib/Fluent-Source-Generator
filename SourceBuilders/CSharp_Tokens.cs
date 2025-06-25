@@ -1,6 +1,7 @@
 ﻿using Flynth.Core;
 using Flynth.Tokens;
 using System;
+using System.Text;
 
 namespace Flynth.SourceBuilders
 {
@@ -13,11 +14,6 @@ namespace Flynth.SourceBuilders
                 public string Header { get; set; }
                 public CSharp SourceBuilder { get; set; }
 
-                public BlockToken(SourceBuilderOptions options, CSharp source_builder) : base(options)
-                {
-                    SourceBuilder = source_builder;
-                }
-
                 public BlockToken(SourceBuilderOptions options, string header, CSharp source_builder) : base(options)
                 {
                     Header = header;
@@ -26,23 +22,15 @@ namespace Flynth.SourceBuilders
 
                 public override string ToString()
                 {
+                    var output = new StringBuilder();
+
                     var new_line = Environment.NewLine;
+                    output.Append(ApplyReplacements(Header));
+                    output.Append($"{new_line}{{");
+                    output.Append($"{new_line}{SourceBuilder}");
+                    output.Append($"{new_line}}}");
 
-                    var tabs = string.Empty;
-                    if (Options.NumberOfSpacesInOneTab > 0)
-                        tabs = new string(' ', Options.NumberOfSpacesInOneTab);
-
-                    var output = string.Empty;
-
-                    var header = ApplyReplacements(Header);
-                    if (!string.IsNullOrWhiteSpace(header))
-                        output += header;
-
-                    output += $"{new_line}{{";
-                    output += $"{new_line}{tabs}{SourceBuilder.ToString().Replace($"{new_line}", $"{new_line}{tabs}")}";
-                    output += $"{new_line}}}";
-
-                    return output;
+                    return output.ToString();
                 }
             }
         }
