@@ -1,4 +1,6 @@
-﻿namespace Flynth.SourceBuilder.General.Tokens
+﻿using Flynth.General;
+
+namespace Flynth.General.Tokens
 {
     public abstract class Token
     {

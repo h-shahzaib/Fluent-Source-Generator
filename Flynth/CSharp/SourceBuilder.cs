@@ -1,10 +1,10 @@
-﻿using Flynth.SourceBuilder.CSharp.Tokens;
+﻿using Flynth.CSharp.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Flynth.SourceBuilder.CSharp
+namespace Flynth.CSharp
 {
     public class SourceBuilder
     {

@@ -1,11 +1,6 @@
-﻿using Flynth.SourceBuilder.CSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Flynth.General;
 
-namespace Flynth.SourceBuilder.CSharp.Tokens
+namespace Flynth.General.Tokens
 {
     public class LineToken : Token
     {

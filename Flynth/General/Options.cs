@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Flynth.SourceBuilder.General
+namespace Flynth.General
 {
     public class Options
     {

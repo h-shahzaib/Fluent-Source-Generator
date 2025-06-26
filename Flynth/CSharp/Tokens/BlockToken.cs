@@ -1,8 +1,8 @@
-﻿using Flynth.SourceBuilder.CSharp;
+﻿using Flynth.CSharp;
 using System;
 using System.Text;
 
-namespace Flynth.SourceBuilder.CSharp.Tokens
+namespace Flynth.CSharp.Tokens
 {
     public class BlockToken : Token
     {
