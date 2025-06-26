@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flynth.SourceBuilder.General;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Flynth.SourceBuilder.CSharp
 
         public Options()
         {
+            m_CharReplacements = new Dictionary<char, char>();
             NumberOfSpacesInOneTab = 4;
             RegisterCharReplacement('`', '"');
         }

@@ -1,4 +1,4 @@
-﻿using Flynth.SourceBuilder.General;
+﻿using Flynth.SourceBuilder.CSharp;
 
 namespace Demo
 {
