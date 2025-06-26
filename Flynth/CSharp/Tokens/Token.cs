@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flynth.Tokens
+namespace Flynth.CSharp.Tokens
 {
-    public abstract class BaseToken : IToken
+    public abstract class Token
     {
-        public SourceBuilderOptions Options { get; }
+        public Options Options { get; }
 
-        protected BaseToken(SourceBuilderOptions options)
+        protected Token(Options options)
         {
-            Options = new SourceBuilderOptions(options);
+            Options = new Options(options);
         }
 
         public abstract override string ToString();

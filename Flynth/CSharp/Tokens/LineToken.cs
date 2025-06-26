@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flynth.Tokens
+namespace Flynth.CSharp.Tokens
 {
-    public class LineToken : BaseToken
+    public class LineToken : Token
     {
         public string Line { get; set; }
 
-        public LineToken(SourceBuilderOptions options) : base(options)
+        public LineToken(Options options) : base(options)
         {
         }
 
-        public LineToken(SourceBuilderOptions options, string line) : base(options)
+        public LineToken(Options options, string line) : base(options)
         {
             Line = line;
         }
