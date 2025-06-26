@@ -1,10 +1,10 @@
-﻿using Flynth.CSharp.Tokens;
+﻿using Flynth.SourceBuilder.CSharp.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Flynth.CSharp
+namespace Flynth.SourceBuilder.CSharp
 {
     public class SourceBuilder
     {
@@ -83,12 +83,11 @@ namespace Flynth.CSharp
                 var next_token = m_Tokens.ElementAtOrDefault(i + 1);
 
                 var next_token_not_empty =
-                    (next_token is LineToken next_line_token
-                        && !string.IsNullOrWhiteSpace(next_line_token.Line)) ||
-                    (next_token is LinesToken next_lines_token
+                    next_token is LineToken next_line_token
+                        && !string.IsNullOrWhiteSpace(next_line_token.Line) ||
+                    next_token is LinesToken next_lines_token
                         && next_lines_token.Lines.Length > 0
-                        && !string.IsNullOrWhiteSpace(next_lines_token.Lines[0])
-                    );
+                        && !string.IsNullOrWhiteSpace(next_lines_token.Lines[0]);
 
                 var tabs = string.Empty;
                 if (m_IndentLevel != 0 && token.Options.NumberOfSpacesInOneTab > 0)

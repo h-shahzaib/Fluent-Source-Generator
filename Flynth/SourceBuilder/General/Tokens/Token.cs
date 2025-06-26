@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Flynth.CSharp.Tokens
+﻿namespace Flynth.SourceBuilder.General.Tokens
 {
     public abstract class Token
     {
