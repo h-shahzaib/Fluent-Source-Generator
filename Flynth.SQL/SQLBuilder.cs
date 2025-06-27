@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Flynth.SQL.Select
+namespace Flynth.SQL
 {
-    public class SelectBuilder<T> where T : class
+    public class SQLBuilder
     {
 
     }
