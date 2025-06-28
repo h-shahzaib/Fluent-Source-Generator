@@ -1,16 +1,58 @@
-## **Overview** 
+# Flynth.CSharp
 
-Built on **.NET Standard 2.0**, this library provides seamless compatibility across all .NET versions, with zero external dependencies. Simply import the project as a reference, and you're ready to go!
-
-This library simplifies source code generation with a fluent, user-friendly API (inspired by **QuestPDF**) that ensures your code structure remains clean, readable, and intuitive. It takes care of all the tedious formatting, indentation, and syntax, so you can focus on the logic of generating code.
-
+> **Flynth.CSharp** is a fluent, zero-dependency source code generator for C#.
+> It helps you create structured C# source code through a clean, builder-style API — so you can focus on _what_ to generate, not _how_ to format it.
 
 ---
 
+## 📦 Installation
 
-## **Example**
+Install via the .NET CLI:
 
-To demonstrate the library's usage, lets generate the following C# code:
+```
+dotnet add package Flynth.CSharp
+```
+
+---
+
+## 🚀 Overview
+
+Built on **.NET Standard 2.0**, Flynth.CSharp works across **all .NET versions** with **no external dependencies**.
+It handles indentation, structure, formatting, and character escaping — all out of the box.
+
+---
+
+## ✨ Key Features
+
+### ✅ Fluent API — Code That Writes Code
+
+Write source generation logic that looks nearly identical to the output.
+No manual formatting, indentation, or brace management required.
+
+### 🧠 Token-Aware Formatting
+
+The builder system knows its context — it places line breaks and indentation only where needed, making your generated code clean and readable.
+
+### 🔄 Character Replacement System
+
+Write code with backticks instead of escaped double quotes:
+
+```csharp
+_method.Line("Console.WriteLine(`Hello World!`);");
+```
+
+You can customize or remove replacements:
+
+```csharp
+_root.ChildOptions.RegisterCharReplacement('`', '"');
+_root.ChildOptions.RemoveCharReplacement('`');
+```
+
+---
+
+## 🧪 Example
+
+This C# code:
 
 ```csharp
 using System.IO;
@@ -35,10 +77,12 @@ namespace MyNamespace
 }
 ```
 
-Using the library's `CSharp_SourceBuilder`, you can generate the above code as follows:
+Can be generated like this:
 
 ```csharp
-var _root = new CSharp_SourceBuilder();
+using Flynth.CSharp;
+
+var _root = new SourceBuilder();
 _root.Using("System.IO");
 _root.Using("System.Collections.Generic");
 
@@ -62,82 +106,57 @@ _root.Namespace("MyNamespace", _namespace =>
     });
 });
 
-var str = _root.ToString();
+var result = _root.ToString();
 ```
-
 
 ---
 
+## ⚠️ Compatibility Note
 
-## **Key Features**
+Flynth works with all .NET targets that support **.NET Standard 2.0**.
+If you're using older .NET versions like .NET Core < 3.0 or .NET Framework, be aware of this:
 
-### 1. **Code that Writes Code**  
-One of the key strengths of this library is that the code used to generate other code is nearly identical to the generated output. You no longer need to worry about line breaks, indentation, braces, or high-level syntax like `usings`, `namespaces`, or `classes`—the library takes care of all that for you.
+### 🔁 Variable Name Conflicts in Nested Scopes
 
-
-### 2. **Char Replacement System**  
-When writing strings with double quotes (`"`) inside, you can use backticks (`` ` ``) for convenience. The library has a built-in character replacement system to handle this.
-
-For example:
-```csharp
-_method.Line("Console.WriteLine(`Hello World!`);");
-```
-This uses backticks instead of double quotes to avoid escaping characters. The library automatically registers backticks as replacements for double quotes. You can also register custom character replacements as needed.
-
-To register a custom character replacement:
-```csharp
-_root.ChildOptions.RegisterCharReplacement('`', '"');
-```
-This ensures that any backtick in the `SourceBuilder` will be replaced by double quotes when generating the code.
-
-To remove a character replacement:
-```csharp
-_root.ChildOptions.RemoveCharReplacement('`');
-```
-
-
-### 3. **Token-Based System**  
-Every element is aware of the elements before and after it, thanks to a token-based system. For example, when calling `.Line()` twice, no line break is inserted between them. However, when using `.Lines()`, a different token is used that understands that multiple lines should be preceded by a line break. Furthermore, if the `.Line()` token is the last in a block with no subsequent content, it automatically knows that the block is about to end and prevents adding an unnecessary line break.
-
-This system ensures that code generation remains structured and easy to control, helping maintain consistency and readability across your generated output.
-
-
----
-
-
-## **Getting Started**
-
-1. Add the library to your project by importing it as a reference.
-2. Use the fluent API to start building your code structure.
-3. Call `ToString()` on the `SourceBuilder` instance to retrieve the generated C# code.
-
-
----
-
-
-## **Limitation with Older .NET Versions**
-
-
-### **Potential Name Conflict In Nested Scopes**
-
-When using this library with earlier versions of .NET Core (< 3.0) or with .NET Framework, you cannot reuse the same variable name in nested scopes. For example:
+Older compilers don't allow reuse of the same variable name inside nested lambdas:
 
 ```csharp
 _class.Method("public", "void", "Main", "", _method =>
 {
     _method.Line("var number = 10;");
 
-    _method.Method("", "void", "InnerMethod", "", _method => // <-- Will give `A local or parameter named '_method' cannot be declared in this scope because that name is used in an enclosing local scope to define a local or parameter` syntax error.
+    _method.Method("", "void", "InnerMethod", "", _method => // ❌ Conflict
     {
         _method.Line("var number = 20;");
     });
 });
 ```
 
-#### **Solution:**
+#### ✅ Solution:
 
-You'll have to use a different name like maybe `_inner_method` for inner scope.
+Use a different name in inner scopes (e.g. `_inner_method`).
 
-### **Recommendation**
+---
 
-For better flexibility, use **.NET Core 3.0+** or **.NET Standard 2.1+** to avoid this limitation, as these versions allow variable name reuse in nested scopes.
+## 🤔 Why Flynth?
+
+- ✅ Fluent, readable, and chainable API
+- ✅ No need to manage syntax or formatting manually
+- ✅ Output closely mirrors your generation code
+- ✅ No dependencies
+- ✅ Works with any .NET project
+
+---
+
+## 📚 Getting Started
+
+1. Install the package
+2. Use `SourceBuilder` to define your structure
+3. Call `.ToString()` to get the generated code
+
+---
+
+## 🔗 Links
+
+- 📦 NuGet: [https://www.nuget.org/packages/Flynth.CSharp/](https://www.nuget.org/packages/Flynth.CSharp/)
+- 💻 GitHub: [https://github.com/h-shahzaib/Flynth](https://github.com/h-shahzaib/Flynth)
