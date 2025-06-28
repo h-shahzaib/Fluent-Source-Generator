@@ -8,7 +8,7 @@
   
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>Shahzaib Hassan</Authors>
     <Company>h-shahzaib</Company>
     <PackageId>Flynth.CSharp</PackageId>
@@ -17,6 +17,7 @@
     <RepositoryUrl>https://github.com/h-shahzaib/Flynth</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>logo.jpg</PackageIcon>
     <UserSecretsId>3feabb3e-a5d9-49ac-9971-6790a989a81b</UserSecretsId>
   </PropertyGroup>
 
@@ -28,6 +29,7 @@
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="" />
     <None Include="LICENSE" Pack="true" PackagePath="" />
+    <None Include="logo.jpg" Pack="true" PackagePath="" />
   </ItemGroup>
   
 </Project>
