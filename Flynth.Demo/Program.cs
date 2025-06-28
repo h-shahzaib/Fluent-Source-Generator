@@ -1,5 +1,7 @@
 ﻿using Flynth.CSharp;
 
+// dotnet build -c Release && dotnet pack -c Release
+
 namespace Flynth.Demo
 {
     internal class Program
