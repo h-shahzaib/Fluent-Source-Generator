@@ -9,7 +9,7 @@ namespace Flynth.CSharp.Tokens
 {
     public class LinesToken : Token
     {
-        public string[] Lines { get; set; }
+        public string[] Lines { get; }
 
         public LinesToken(Options options, string[] lines) : base(options)
         {

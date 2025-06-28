@@ -1,4 +1,5 @@
 ﻿using Flynth.CSharp.Tokens;
+using Flynth.CSharp.Tokens.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ namespace Flynth.CSharp
 {
     public class SourceBuilder
     {
-        private int m_IndentLevel = 0;
+        private readonly List<Token> m_Tokens = [];
 
-        private readonly List<Token> m_Tokens = new List<Token>();
+        public bool IsRootBuilder { get; set; } = true;
 
         public Options Options
         {
@@ -18,11 +19,11 @@ namespace Flynth.CSharp
             {
                 if (m_Options == null)
                     Options = Options.Default;
-                return m_Options;
+                return m_Options!;
             }
             set => m_Options = new Options(value);
         }
-        private Options m_Options;
+        private Options? m_Options;
 
         public void Token(Token token)
         {
@@ -48,27 +49,42 @@ namespace Flynth.CSharp
         {
             var source_builder = new SourceBuilder();
             source_builder.Options = Options;
-            source_builder.m_IndentLevel = m_IndentLevel + 1;
+            source_builder.IsRootBuilder = false;
             source_builder_act.Invoke(source_builder);
-            m_Tokens.Add(new BlockToken(Options, $"namespace {@namespace}", source_builder));
+            m_Tokens.Add(new BlockNode(Options, $"namespace {@namespace}", source_builder));
         }
 
         public void Class(string modifiers, string class_name, Action<SourceBuilder> source_builder_act)
         {
             var source_builder = new SourceBuilder();
             source_builder.Options = Options;
-            source_builder.m_IndentLevel = m_IndentLevel + 1;
+            source_builder.IsRootBuilder = false;
             source_builder_act.Invoke(source_builder);
-            m_Tokens.Add(new BlockToken(Options, $"{(!string.IsNullOrWhiteSpace(modifiers) ? $"{modifiers} " : string.Empty)}class {class_name}", source_builder));
+            m_Tokens.Add(new BlockNode(Options, $"{(!string.IsNullOrWhiteSpace(modifiers) ? $"{modifiers} " : string.Empty)}class {class_name}", source_builder));
         }
 
         public void Method(string modifiers, string return_type, string method_name, string parameters, Action<SourceBuilder> source_builder_act)
         {
             var source_builder = new SourceBuilder();
             source_builder.Options = Options;
-            source_builder.m_IndentLevel = m_IndentLevel + 1;
+            source_builder.IsRootBuilder = false;
             source_builder_act.Invoke(source_builder);
-            m_Tokens.Add(new BlockToken(Options, $"{(!string.IsNullOrWhiteSpace(modifiers) ? $"{modifiers} " : string.Empty)}{return_type} {method_name}({parameters})", source_builder));
+            m_Tokens.Add(new BlockNode(Options, $"{(!string.IsNullOrWhiteSpace(modifiers) ? $"{modifiers} " : string.Empty)}{return_type} {method_name}({parameters})", source_builder));
+        }
+
+        public IfElseNode If(string condition, Action<SourceBuilder> source_builder_act)
+        {
+            if (string.IsNullOrWhiteSpace(condition))
+                throw new ArgumentException("Condition for `If` statement cannot be null, empty or whitespace.", nameof(condition));
+
+            var source_builder = new SourceBuilder();
+            source_builder.Options = Options;
+            source_builder.IsRootBuilder = false;
+            source_builder_act.Invoke(source_builder);
+
+            var node = new IfElseNode(Options, condition, source_builder);
+            m_Tokens.Add(node);
+            return node;
         }
 
         public override string ToString()
@@ -90,26 +106,26 @@ namespace Flynth.CSharp
                         && !string.IsNullOrWhiteSpace(next_lines_token.Lines[0]);
 
                 var tabs = string.Empty;
-                if (m_IndentLevel != 0 && token.Options.NumberOfSpacesInOneTab > 0)
+                if (!IsRootBuilder && token.Options.NumberOfSpacesInOneTab > 0)
                     tabs = new string(' ', token.Options.NumberOfSpacesInOneTab);
 
                 if (i != 0)
                     string_builder.AppendLine();
                 string_builder.Append(tabs + token.ToString().Replace(new_line, $"{new_line}{tabs}"));
 
-                if (token is BlockToken)
+                if (token is NodeToken)
                 {
-                    if (i != m_Tokens.Count - 1 && (next_token is BlockToken || next_token_not_empty))
+                    if (i != m_Tokens.Count - 1 && (next_token is NodeToken || next_token_not_empty))
                         string_builder.AppendLine();
                 }
                 else if (token is LineToken line_token)
                 {
-                    if (i != m_Tokens.Count - 1 && !string.IsNullOrWhiteSpace(line_token.Line) && !(next_token is LineToken) && (next_token is BlockToken || next_token_not_empty))
+                    if (i != m_Tokens.Count - 1 && !string.IsNullOrWhiteSpace(line_token.Line) && next_token is not LineToken && (next_token is NodeToken || next_token_not_empty))
                         string_builder.AppendLine();
                 }
                 else if (token is LinesToken lines_token)
                 {
-                    if (i != m_Tokens.Count - 1 && lines_token.Lines.Length > 0 && !string.IsNullOrWhiteSpace(lines_token.Lines[lines_token.Lines.Length - 1]) && (next_token is BlockToken || next_token_not_empty))
+                    if (i != m_Tokens.Count - 1 && lines_token.Lines.Length > 0 && !string.IsNullOrWhiteSpace(lines_token.Lines[lines_token.Lines.Length - 1]) && (next_token is NodeToken || next_token_not_empty))
                         string_builder.AppendLine();
                 }
                 else
