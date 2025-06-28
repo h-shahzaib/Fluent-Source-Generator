@@ -8,15 +8,16 @@
   
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Shahzaib Hassan</Authors>
     <Company>h-shahzaib</Company>
     <PackageId>Flynth.CSharp</PackageId>
-    <Description>Flynth is a fluent C# source generator that lets you write code that mirrors the structure of the code you're generating — no more string concatenation, manual indentation, or clumsy formatting. Inspired by QuestPDF’s API elegance, it transforms source code generation into a clean, readable, and intuitive experience, letting you focus on logic, not syntax.</Description>
-    <PackageTags>flynth csharp source generator fluent dotnet</PackageTags>
+    <Description>Flynth is a fluent C# source generator that lets you build code through a structured API — no string hacks, no manual indentation, just clean and readable code generation logic.</Description>
+    <PackageTags>flynth csharp source gen generator fluent dotnet</PackageTags>
     <RepositoryUrl>https://github.com/h-shahzaib/Flynth</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <UserSecretsId>3feabb3e-a5d9-49ac-9971-6790a989a81b</UserSecretsId>
   </PropertyGroup>
 
   <Target Name="CopyDocs" BeforeTargets="Pack">
